@@ -22,7 +22,7 @@ RUN pip install djangorestframework && \
 
 RUN mkdir /tmp/metrics && chown apache.apache /tmp/metrics
 
-ADD httpd.conf /etc/httpd/conf/httpd.conf
+ADD httpd.conf /etc/httpd/conf/
 
 EXPOSE 8000
 EXPOSE 8443
