@@ -3,7 +3,7 @@
 # /root/start.sh will then start the mysqldb, zabbix, and httpd services.
 # Default login:password to Zabbix is Admin:zabbix
 
-FROM oso-rhel7-ops-base:latest
+FROM centos7:latest
 
 RUN echo "root:redhat" | chpasswd
 
