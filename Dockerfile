@@ -25,7 +25,7 @@ RUN mkdir /tmp/metrics && chown apache.apache /tmp/metrics
 EXPOSE 80
 EXPOSE 443
 
-RUN chmod 777 /opt/rh/zagg
+RUN chmod -R 777 /opt/rh/zagg
 
 # Start apache
 ADD start.sh /usr/local/bin/
