@@ -22,8 +22,10 @@ RUN pip install djangorestframework && \
 
 RUN mkdir /tmp/metrics && chown apache.apache /tmp/metrics
 
-EXPOSE 80
-EXPOSE 443
+ADD httpd.conf /etc/httpd/conf/httpd.conf
+
+EXPOSE 8000
+EXPOSE 8443
 
 RUN chmod -R 777 /opt/rh/zagg
 RUN chmod -R 777 /var/run/httpd
