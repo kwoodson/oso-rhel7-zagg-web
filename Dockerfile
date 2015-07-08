@@ -29,6 +29,7 @@ EXPOSE 8443
 
 RUN chmod -R 777 /opt/rh/zagg
 RUN chmod -R 777 /var/run/httpd
+RUN chmod -R 777 /etc/httpd
 
 # Start apache
 ADD start.sh /usr/local/bin/
