@@ -31,6 +31,7 @@ RUN chmod -R 777 /opt/rh/zagg
 RUN chmod -R 777 /var/run/httpd
 RUN chmod -R 777 /etc/httpd
 RUN chmod -R 777 /var/log/httpd
+RUN chmod -R 777 /tmp/metrics
 
 # Start apache
 ADD start.sh /usr/local/bin/
