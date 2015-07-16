@@ -30,14 +30,13 @@ ADD oo_filters.py /usr/share/ansible_plugins/filter_plugins/oo_filters.py
 
 ADD config.yml /root/config.yml
 
-EXPOSE 8000
-EXPOSE 8443
+EXPOSE 8000 8443
 
-RUN chmod -R 777 /opt/rh/zagg
-RUN chmod -R 777 /var/run/httpd
-RUN chmod -R 777 /etc/httpd
-RUN chmod -R 777 /var/log/httpd
-RUN chmod -R 777 /tmp/metrics
+# Temporary fixes until we can run as root
+RUN chmod -R 777 /opt/rh/zagg /var/run/httpd /etc/httpd /var/log/httpd /tmp/metrics /etc/passwd /root /var/run/zagg /etc/openshift_tools
+RUN chmod 777 /etc/ansible
+ADD httpd.conf /etc/httpd/conf/
+
 
 # Start apache
 ADD start.sh /usr/local/bin/
