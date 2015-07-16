@@ -3,7 +3,7 @@
 # /root/start.sh will then start the mysqldb, zabbix, and httpd services.
 # Default login:password to Zabbix is Admin:zabbix
 
-FROM oso-centos7-ops-base:latest
+FROM oso-rhel7-ops-base:latest
 
 RUN echo "root:redhat" | chpasswd
 
@@ -11,9 +11,9 @@ RUN yum clean metadata && \
     yum install -y iproute iputils pylint python-pip \
         python-requests python-django \
         openshift-tools-web-zagg \
-        python-openshift-tools-web \
-        python-openshift-tools-monitoring \
-        tree python-django-bash-completion httpd mod_wsgi && \
+        openshift-tools-scripts-monitoring \
+        tree python-django-bash-completion httpd mod_wsgi \
+        telnet bind-utils net-tools iproute && \
     yum clean all
 
 RUN pip install djangorestframework && \
@@ -22,7 +22,13 @@ RUN pip install djangorestframework && \
 
 RUN mkdir /tmp/metrics && chown apache.apache /tmp/metrics
 
-ADD httpd.conf /etc/httpd/conf/
+# TODO: package these!!! (see trello card https://trello.com/c/SJsvV9OQ)
+#       and add that RPM to this container
+ADD zbxapi.py /usr/share/ansible/zbxapi.py
+ADD oo_filters.py /usr/share/ansible_plugins/filter_plugins/oo_filters.py
+# END TODO
+
+ADD config.yml /root/config.yml
 
 EXPOSE 8000
 EXPOSE 8443
