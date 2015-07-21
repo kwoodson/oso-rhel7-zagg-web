@@ -37,7 +37,7 @@ RUN chmod -R 777 /opt/rh/zagg /var/run/httpd /etc/httpd /var/log/httpd /tmp/metr
 RUN chmod 777 /etc/ansible
 ADD httpd.conf /etc/httpd/conf/
 
-
 # Start apache
 ADD start.sh /usr/local/bin/
 CMD /usr/local/bin/start.sh
+
