@@ -31,8 +31,7 @@ ADD config.yml /root/config.yml
 EXPOSE 8000 8443
 
 # Temporary fixes until we can run as root
-RUN chmod -R 777 /opt/rh/zagg /var/run/httpd /etc/httpd /var/log/httpd /tmp/metrics /etc/passwd /root /var/run/zagg /etc/openshift_tools
-RUN chmod 777 /etc/ansible
+RUN chmod -R g+rwX /opt/rh/zagg /var/run/httpd /etc/httpd /var/log/httpd /tmp/metrics /etc/passwd /root /var/run/zagg /etc/openshift_tools /etc/ansible
 ADD httpd.conf /etc/httpd/conf/
 
 # Start apache
