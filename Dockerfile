@@ -5,8 +5,6 @@
 
 FROM oso-rhel7-ops-base:latest
 
-RUN echo "root:redhat" | chpasswd
-
 RUN yum clean metadata && \
     yum install -y iproute iputils pylint python-pip \
         python-requests python-django \
